@@ -1,0 +1,56 @@
+---
+title: "course project"
+author: "Saruul"
+date: "December 14, 2018"
+output: html_document
+---
+
+
+```{r library uploading}
+library(caret)
+library(dplyr)
+library(ggplot2)
+library(Hmisc)
+library(rattle)
+```
+
+Data uploading
+
+```{r data uploading}
+
+pml_training <- read_csv("D:/Documents/24bf10520/Downloads/pml-training.csv")
+pml_testing <- read_csv("D:/Documents/24bf10520/Downloads/pml-testing.csv")
+
+
+```
+
+
+```{r train data cleaning}
+col_to_remove = which(colSums(is.na(pml_training)|pml_training=="") > 0.8 * dim(pml_training)[1])
+clean_train = pml_training[,-col_to_remove]
+
+```
+
+```{r test data cleaning}
+col_to_remove = which(colSums(is.na(pml_testing)|pml_testing=="") > 0.8 * dim(pml_testing)[1])
+clean_test = pml_testing[,-col_to_remove]
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+
+
+
+
+
+
+
+
